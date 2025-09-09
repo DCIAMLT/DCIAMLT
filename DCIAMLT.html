@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirección de Comunicación - Los Taques</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- Navbar -->
+    <header class="bg-blue-800 text-white p-4 shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Hamburger Menu Icon -->
+            <button id="hamburger-btn" class="text-white focus:outline-none p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Título Principal -->
+            <h1 class="flex-grow text-center text-sm sm:text-lg md:text-xl font-bold">Dirección de Comunicación e Información de la Alcaldía del Municipio Los Taques</h1>
+            <!-- Imagen de la Alcaldía -->
+            <div class="flex-shrink-0">
+                <img src="https://i.ibb.co/jvgDZ83S/Los-Taques-20250909-071627-0001.png" 
+                     onerror="this.src='https://placehold.co/80x80/60a5fa/ffffff?text=LOGO'" 
+                     alt="Logo de la Alcaldía de Los Taques" 
+                     class="w-16 h-16 sm:w-20 sm:h-20 rounded-md shadow-lg">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar de Navegación -->
+    <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-900 text-white p-6 transform -translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-xl">
+        <div class="flex justify-end mb-8">
+            <button id="close-sidebar-btn" class="text-white text-3xl font-bold p-2 focus:outline-none">
+                &times;
+            </button>
+        </div>
+        <ul>
+            <li class="mb-4">
+                <a href="#" data-page="home" class="sidebar-link block text-lg font-semibold hover:text-blue-400 transition-colors duration-200">
+                    Página Principal
+                </a>
+            </li>
+            <li class="mb-4">
+                <a href="#" data-page="mission-vision" class="sidebar-link block text-lg font-semibold hover:text-blue-400 transition-colors duration-200">
+                    Misión y Visión
+                </a>
+            </li>
+            <li class="mb-4">
+                <a href="#" data-page="organizational-structure" class="sidebar-link block text-lg font-semibold hover:text-blue-400 transition-colors duration-200">
+                    Estructura organizativa
+                </a>
+            </li>
+            <li class="mb-4">
+                <a href="#" data-page="view-news" class="sidebar-link block text-lg font-semibold hover:text-blue-400 transition-colors duration-200">
+                    Noticias y Anuncios
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Overlay para cerrar el sidebar al hacer clic fuera -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black opacity-0 transition-opacity duration-300 ease-in-out z-30 hidden"></div>
+
+    <!-- Contenido Principal -->
+    <main class="container mx-auto px-4 py-8 mt-28">
+        <section id="content-container" class="bg-white p-6 md:p-12 rounded-lg shadow-lg min-h-screen">
+            <!-- El contenido se cargará aquí dinámicamente -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-8">
+        <div class="container mx-auto text-center text-sm md:text-base">
+            <p>&reg; Derechos Reservados, 2025.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const sidebar = document.getElementById('sidebar');
+            const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const contentContainer = document.getElementById('content-container');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+            const newsContent = `
+                <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Noticias y Anuncios</h2>
+                <div class="space-y-8">
+                    <!-- 
+                        CÓDIGO DE PLANTILLA PARA UNA NUEVA NOTICIA O ANUNCIO. 
+                        
+                        Para publicar una nueva noticia:
+                        1. Copia todo el bloque de <article> que ves a continuación.
+                        2. Pégalo justo antes del bloque de noticias existente (para que la más nueva aparezca primero).
+                        3. Cambia el Título, la Fecha y el Contenido de la noticia.
+                    -->
+
+                    <article class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">SIN NOTICIAS QUE VISUALIZAR</h3>
+                        <p class="text-sm text-gray-500 mb-4"></p>
+                        <div class="text-gray-700 leading-relaxed">
+                            <p>Le agradecemos querido lector por visitar nuestra pagina institucional.</p>
+                        </div>
+                    </article>
+                </div>
+            `;
+
+            // Mapeo de contenido para cada página
+            const pages = {
+                'home': `
+                    <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-6 text-center">Bienvenido</h2>
+                    <p class="text-gray-700 text-lg text-center">
+                        Seleccione una opción del menú para ver más información.
+                    </p>
+                `,
+                'mission-vision': `
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-blue-800 mb-6">Misión y Visión</h2>
+                        <div class="bg-gray-100 p-6 rounded-lg shadow-inner mb-6">
+                            <h3 class="text-2xl font-semibold text-blue-700 mb-2">Misión</h3>
+                            <p class="text-gray-700 leading-relaxed text-left">
+                                La Dirección de Comunicación e Información de la Alcaldía de Los Taques tiene como misión ser el enlace estratégico, transparente y permanente entre la gestión municipal y la comunidad taquense. Nos dedicamos a diseñar, ejecutar y evaluar planes integrales de comunicación que informen, eduquen y orienten a la ciudadanía sobre las políticas, programas, obras y servicios del gobierno local. Nuestro compromiso es fomentar la participación ciudadana, promover los valores culturales e identitarios del municipio y garantizar el derecho a la información pública de manera clara, veraz, oportuna y accesible para todos, utilizando los canales y tecnologías más adecuadas.
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded-lg shadow-inner">
+                            <h3 class="text-2xl font-semibold text-blue-700 mb-2">Visión</h3>
+                            <p class="text-gray-700 leading-relaxed text-left">
+                                Ser reconocida como la dirección líder en comunicación pública municipal, referente de innovación, credibilidad y cercanía en el municipio Los Taques. Aspiramos a construir una ciudadanía mejor informada y plenamente comprometida con el desarrollo de su municipio, donde la comunicación sea una herramienta fundamental para la cohesión social, la rendición de cuentas y la promoción del progreso sostenible de Los Taques, posicionándolo como un destino próspero y una comunidad unida.
+                            </p>
+                        </div>
+                    </div>
+                `,
+                'organizational-structure': `
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-blue-800 mb-6">Estructura organizativa</h2>
+                        <ul class="text-lg text-gray-800 space-y-3">
+                            <li><span class="font-semibold text-blue-700">Director:</span> Diego García Medina</li>
+                            <li><span class="font-semibold text-blue-700">Portavoz de la Alcaldía del Municipio Los Taques:</span> Alejandro Rivera</li>
+                            <li><span class="font-semibold text-blue-700">Jefa de Contenidos y Estrategia Digitales:</span> Yudliet Diaz</li>
+                            <li><span class="font-semibold text-blue-700">Jefe de Medios y Relaciones Públicas:</span> José Cossi</li>
+                        </ul>
+                    </div>
+                `,
+                'view-news': newsContent
+            };
+
+            // Función para abrir el sidebar
+            function openSidebar() {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                setTimeout(() => sidebarOverlay.classList.add('opacity-50'), 10);
+            }
+
+            // Función para cerrar el sidebar
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.remove('opacity-50');
+                setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+            }
+
+            // Cargar la página inicial al inicio
+            contentContainer.innerHTML = pages['home'];
+
+            // Manejar clics para abrir y cerrar el sidebar
+            hamburgerBtn.addEventListener('click', openSidebar);
+            closeSidebarBtn.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+
+            // Manejar clics en los enlaces del sidebar
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = e.target.getAttribute('data-page');
+                    contentContainer.innerHTML = pages[page];
+                    closeSidebar();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
