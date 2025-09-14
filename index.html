@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -11,12 +11,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-            transition: background-color 0.3s ease;
-        }
-        .dark {
-            background-color: #1a202c;
-            color: #e2e8f0;
+            background-color: #1a202c; /* Fondo oscuro permanente */
+            color: #e2e8f0; /* Color de texto claro */
         }
         .dark .bg-blue-800 {
             background-color: #1e3a8a;
@@ -45,72 +41,9 @@
         .dark .shadow-lg {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
         }
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 24px;
-        }
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        input:checked + .slider:before {
-            transform: translateX(16px);
-        }
-        .sun-icon, .moon-icon {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-            color: white;
-            z-index: 1;
-            transition: opacity 0.4s ease-in-out;
-        }
-        .sun-icon {
-            left: 6px;
-            opacity: 1;
-        }
-        .moon-icon {
-            right: 6px;
-            opacity: 0;
-        }
-        input:checked ~ .sun-icon {
-            opacity: 0;
-        }
-        input:checked ~ .moon-icon {
-            opacity: 1;
-        }
     </style>
 </head>
-<body class="relative min-h-screen">
+<body class="dark relative min-h-screen">
 
     <!-- Navbar -->
     <header class="bg-blue-800 text-white p-4 shadow-lg fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
@@ -191,22 +124,6 @@
             const sidebarLinks = document.querySelectorAll('.sidebar-link');
             const body = document.body;
 
-            // Función para alternar entre modo claro y oscuro
-            function toggleDarkMode() {
-                // Alterna la clase 'dark' en el body para aplicar los estilos de modo oscuro
-                body.classList.toggle('dark');
-
-                // Almacena la preferencia del usuario en localStorage
-                localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-            }
-
-            // Comprueba si el usuario tiene una preferencia guardada en localStorage
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                body.classList.add('dark');
-            } else {
-                body.classList.remove('dark');
-            }
-
             const newsContent = `
                 <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Noticias y Anuncios</h2>
                 <div class="space-y-8">
@@ -234,18 +151,6 @@
                         <p class="text-gray-700 text-lg">
                             La Alcaldia del Municipio Los Taques le agradece a usted estimado lector su visita a este sitio web.
                         </p>
-                        <div class="mt-8 flex flex-col items-center">
-                            <p class="text-sm md:text-md text-gray-700 max-w-sm mb-4">
-                                si te molesta mucho el brillo, este interruptor te ayudará a solucionar eso, así como nuestro gobierno reconstruirá el país.
-                            </p>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="dark-mode-toggle">
-                                <span class="slider"></span>
-                                <!-- Iconos de sol y luna -->
-                                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.75a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zm0 17.5a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zM4.27 4.27a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06L4.27 5.33a.75.75 0 010-1.06zm14.46 14.46a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zM2.75 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zm17.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zM4.27 19.73a.75.75 0 010-1.06l1.06-1.06a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 01-1.06 0zM19.73 4.27a.75.75 0 010 1.06l-1.06 1.06a.75.75 0 01-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zM12 7a5 5 0 110 10 5 5 0 010-10z"/></svg>
-                                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M17.25 14.25a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V11a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v3.25zm-2.5-3.25a.75.75 0 00-.75.75v3.25a.75.75 0 00.75.75h2.5a.75.75 0 00.75-.75V11a.75.75 0 00-.75-.75h-2.5zM12 21.25a.75.75 0 01-.75-.75v-1.5a.75.75 0 011.5 0v1.5a.75.75 0 01-.75.75zm0-17.5a.75.75 0 01-.75-.75v-1.5a.75.75 0 011.5 0v1.5a.75.75 0 01-.75.75zM4.27 4.27a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06L4.27 5.33a.75.75 0 010-1.06zm14.46 14.46a.75.75 0 011.06 0l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zM2.75 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zM19.75 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zM4.27 19.73a.75.75 0 010-1.06l1.06-1.06a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 01-1.06 0zM19.73 4.27a.75.75 0 010 1.06l-1.06 1.06a.75.75 0 01-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zM12 7a5 5 0 110 10 5 5 0 010-10z"/></svg>
-                            </label>
-                        </div>
                     </div>
                 `,
                 'mission-vision': `
@@ -320,31 +225,10 @@
             // Cargar la página inicial al inicio
             contentContainer.innerHTML = pages['home'];
             
-            // Función para alternar entre modo claro y oscuro
-            function toggleDarkMode() {
-                body.classList.toggle('dark');
-                localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-            }
-
             // Manejar clics para abrir y cerrar el sidebar
             hamburgerBtn.addEventListener('click', openSidebar);
             closeSidebarBtn.addEventListener('click', closeSidebar);
             sidebarOverlay.addEventListener('click', closeSidebar);
-            
-            // Re-asignar el listener del botón de modo oscuro
-            contentContainer.addEventListener('change', (e) => {
-                if (e.target.id === 'dark-mode-toggle') {
-                    toggleDarkMode();
-                }
-            });
-
-            // Re-establecer el estado del toggle en cada cambio de página
-            function setDarkModeToggleState() {
-                const darkModeToggle = document.getElementById('dark-mode-toggle');
-                if (darkModeToggle) {
-                    darkModeToggle.checked = body.classList.contains('dark');
-                }
-            }
 
             // Manejar clics en los enlaces del sidebar
             sidebarLinks.forEach(link => {
@@ -353,12 +237,8 @@
                     const page = e.target.getAttribute('data-page');
                     contentContainer.innerHTML = pages[page];
                     closeSidebar();
-                    setDarkModeToggleState();
                 });
             });
-
-            // Llamar al estado inicial
-            setDarkModeToggleState();
         });
     </script>
 </body>
