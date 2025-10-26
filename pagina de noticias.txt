@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticia Extendida - Los Taques</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Fondo oscuro permanente */
+            color: #e2e8f0; /* Color de texto claro */
+        }
+        /* Estilos para modo oscuro (manteniendo la consistencia) */
+        .dark .bg-blue-800 { background-color: #1e3a8a; }
+        .dark .bg-white { background-color: #2d3748; }
+        .dark .text-blue-800 { color: #90cdf4; }
+        .dark .text-gray-700 { color: #a0aec0; }
+        .dark .text-gray-800 { color: #e2e8f0; }
+        .dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3); }
+    </style>
+</head>
+<body class="dark relative min-h-screen">
+
+    <header class="bg-blue-800 text-white p-4 shadow-lg fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto flex justify-center sm:justify-between items-center">
+            <h1 class="text-sm sm:text-lg md:text-xl font-bold text-center">Noticia Destacada de la Alcaldía del Municipio Los Taques</h1>
+            <div class="flex-shrink-0 hidden sm:block">
+                <img src="https://i.ibb.co/bRWNDh9V/Los-Taques-20250909-071627-0001.png" 
+                     onerror="this.src='https://placehold.co/80x80/60a5fa/ffffff?text=LOGO'" 
+                     alt="Logo de la Alcaldía de Los Taques" 
+                     class="w-16 h-16 sm:w-20 sm:h-20 rounded-md shadow-lg">
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 mt-28">
+        <section class="bg-white p-6 md:p-12 rounded-lg shadow-lg min-h-screen transition-colors duration-300">
+            
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-2 text-center">
+                📢 Título Principal de la Noticia Extendida Aquí
+            </h2>
+            <p class="text-sm text-gray-700 mb-6 text-center italic">
+                Fecha de Publicación: 26 de octubre de 2025 | Autor: Dirección de Comunicación
+            </p>
+            
+            <div class="text-gray-700 leading-relaxed space-y-6">
+                
+                <p>
+                    <span class="font-bold text-lg text-blue-800">Primer Párrafo:</span> Aquí comienza el cuerpo de la noticia extendida. Utilice este espacio para desarrollar en detalle los hechos, las declaraciones de funcionarios, y el impacto de la información. Asegúrese de que el texto sea claro, veraz y de interés para la comunidad.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+                    <div class="overflow-hidden rounded-lg shadow-xl border-4 border-blue-500">
+                        <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=IMAGEN+PRINCIPAL+DE+LA+NOTICIA" 
+                             alt="Imagen principal de la noticia" 
+                             class="w-full h-auto object-cover">
+                        <p class="text-center text-sm text-gray-700 p-2 bg-gray-100">Descripción de la Imagen 1</p>
+                    </div>
+
+                    <div class="overflow-hidden rounded-lg shadow-xl border-4 border-blue-500">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=IMAGEN+DE+SOPORTE" 
+                             alt="Imagen de soporte para la noticia" 
+                             class="w-full h-auto object-cover">
+                        <p class="text-center text-sm text-gray-700 p-2 bg-gray-100">Descripción de la Imagen 2</p>
+                    </div>
+
+                    <div class="overflow-hidden rounded-lg shadow-xl border-4 border-blue-500">
+                        <img src="https://placehold.co/600x400/60a5fa/ffffff?text=IMAGEN+ADICIONAL" 
+                             alt="Imagen adicional de la noticia" 
+                             class="w-full h-auto object-cover">
+                        <p class="text-center text-sm text-gray-700 p-2 bg-gray-100">Descripción de la Imagen 3</p>
+                    </div>
+                </div>
+
+                <p>
+                    <span class="font-bold text-lg text-blue-800">Desarrollo:</span> Aquí puede continuar con la información, citando fuentes, mostrando estadísticas o resultados. Es crucial usar etiquetas `<p>` para separar los párrafos y hacer la lectura más amigable.
+                </p>
+
+                <p>
+                    <span class="font-bold text-lg text-blue-800">Cierre:</span> Finalmente, incluya una conclusión o un llamado a la acción. Recuerde reemplazar los enlaces `https://placehold.co/...` y el texto con el contenido real de su noticia y las URLs de sus imágenes.
+                </p>
+                
+                <div class="text-center pt-4">
+                    <a href="index.html" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                        Volver a Noticias y Anuncios
+                    </a>
+                </div>
+            </div>
+
+            </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 mt-8 transition-colors duration-300">
+        <div class="container mx-auto text-center text-sm md:text-base">
+            <p>&reg; Derechos Reservados, 2025.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
